@@ -22,4 +22,19 @@ To build a system which will start to capture the system logs generated at MOC, 
 
 ## 4. Solution Concept
 
-![](https://drive.google.com/file/d/19VNMEwxifojwEPoUaJARwf7IfTylmBDL/view?usp=sharing)
+Automate the process of filtering log files for PII using a suitable algorithm which can be used to filter multiple log files across different systems.
+
+
+![Overview](https://github.com/BU-NU-CLOUD-F19/Curating_Log_Files/blob/master/images/FCC.png)
+
+
+### Component Description:
+
+1. Sources: Sources (Data stores) on the MOC from where the log files would be taken as an input.
+2. Log file Fetch Service: Script/Service that fetches data from different MOC cloud sources and sends the log files to an Object File Storage service.
+3. Log file Storage: An object-based storage mechanism that can be used to store original as well as the filtered log files.
+4. Function to filter files: A script that detects anomalies/PII information in the log files, removes the confidential information and passes it onto another block storage for further analyzing/visualization.
+5. Elasticsearch Service: A search tool used to provide relevant files to users.
+6. End User: Researchers who want to analyze the log file data and gain insights into the MOC system.Ê
+
+
