@@ -47,6 +47,15 @@ Automate the process of filtering log files for PII using a suitable algorithm w
 3. Log file Storage: An object-based storage mechanism that can be used to store original as well as the filtered log files.
 4. Function to filter files: A script that detects anomalies/PII information in the log files, removes the confidential information and passes it onto another block storage for further analyzing/visualization.
 5. Elasticsearch Service: A search tool used to provide relevant files to users.
-6. End User: Researchers who want to analyze the log file data and gain insights into the MOC system.Ê
+6. End User: Researchers who want to analyze the log file data and gain insights into the MOC system.
+
+## 5. Acceptance criteria
+
+Provide a service which enables users to access anonymized log files from some services from MOC.
+
+Some stretch goals are:
+ 1. Creating an algorithm which can work with multiple data sources.
+ 2. Using ML algorithms to detect anomalies in the log files.
+
 
 
