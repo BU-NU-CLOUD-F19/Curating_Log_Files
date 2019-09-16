@@ -19,3 +19,7 @@ To build a system which will start to capture the system logs generated at MOC, 
 ### It does not target:
 * Administrators of cloud services, who will continue to use existing tools like Horizon.
 * Advanced users with complex requirements who are expected to use command line interfaces.
+
+## 4. Solution Concept
+
+![](https://drive.google.com/file/d/19VNMEwxifojwEPoUaJARwf7IfTylmBDL/view?usp=sharing)
