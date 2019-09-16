@@ -57,5 +57,24 @@ Some stretch goals are:
  1. Creating an algorithm which can work with multiple data sources.
  2. Using ML algorithms to detect anomalies in the log files.
 
+## 6.  Release Planning
+### Week 1: 
+* Spike in Scope of Technologies Available. 
+* Create Story Cards.(Trello Boards)
+* Slack set up for planning and discussion
+
+### Release 1:
+### Week 2 & 3: 
+* Extraction of Log files from a few sources
+* Research Storage options for log files
+
+### Release 2:
+### Week 4 & 5: 
+* Filtering PII from log files function (initial experiments)
+
+### Release 3:
+### Week 6 & 7: 
+* Elastic search set-up viability on given virtual machine hardware
+* Read documentation about setup.
 
 
