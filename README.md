@@ -20,6 +20,18 @@ To build a system which will start to capture the system logs generated at MOC, 
 * Administrators of cloud services, who will continue to use existing tools like Horizon.
 * Advanced users with complex requirements who are expected to use command line interfaces.
 
+## 3. Scope and Features of the Project:
+
+### Features in Current Scope:
+* Getting logs from various services on MOC.
+* Modify the current services to start capturing system logs.
+* Deploying Elastic Search with Kibana to search through logs
+* Try to analyze log files to provide a feasible algorithm which identifies features and extract PII data.
+* Filter the logs on PII
+
+### Future Scope:
+* Organize anonymizing logs in a way from which we can build ML models to determine if there are patterns of correlation.
+
 ## 4. Solution Concept
 
 Automate the process of filtering log files for PII using a suitable algorithm which can be used to filter multiple log files across different systems.
