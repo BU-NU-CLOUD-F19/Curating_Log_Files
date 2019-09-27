@@ -84,6 +84,8 @@ The first sprint will focus on learning the necessary technical background infor
 Technical spike: 
 * Begin progress towards first milestone by setting up VM on openshift where we plan to identify log sources from multiple VMs running s-openshift.
 
+[Demo link](https://github.com/BU-NU-CLOUD-F19/Curating_Log_Files/blob/master/demos/Week1.pptx)
+
 
 ### Sprint 2
 In Sprint 2, we’d like to move close to completion on our first milestone and begin work on our second. Particularly, we’d like to finish the following features:
