@@ -92,7 +92,7 @@ In Sprint 2, we’d like to move close to completion on our first milestone and 
 * Fetching all log files from multiple fluentd pods, which are on multiple VM’s running openshift.
 * Set up ElasticSearch and Kibana for searching raw log files on one VM.
 
-[Demo link](https://github.com/BU-NU-CLOUD-F19/Curating_Log_Files/blob/master/demos/Sprint%202.pptx)
+[Demo link](https://docs.google.com/presentation/d/1Lb6w3OOkxOWkB-IKia2YSLu2TSyXegyiNVqggS_0JC0/edit#slide=id.p)
 
 
 ### Sprint 3
