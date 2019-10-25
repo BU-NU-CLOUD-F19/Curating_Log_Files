@@ -98,7 +98,7 @@ In Sprint 2, we’d like to move close to completion on our first milestone and 
 ### Sprint 3
 We’d like to reach the first milestone towards our minimum acceptance criteria in Sprint 3:
 * We plan to get an idea about what PII needs to be eliminated from the log files and start implementing it on the collected log files.
-
+[Demo link](https://1drv.ms/p/s!AkxTmCI5bOduolw-_DrHA8nTTuFw)
 
 ### Sprint 4
 In Sprint 4, we aim to complete the minimum acceptance criteria for the project. 
