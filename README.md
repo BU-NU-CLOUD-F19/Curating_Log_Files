@@ -101,6 +101,7 @@ We’d like to reach the first milestone towards our minimum acceptance criteria
 ### Sprint 4
 In Sprint 4, we aim to complete the minimum acceptance criteria for the project. 
 * We plan to get the pipeline that gets the logs into Elasticsearch working.
+
 [Demo link](https://docs.google.com/presentation/d/1SH1uk2c1wEw1WvuMuofFlmsqSqIh6njIhA0qGZ1hxU4/edit?usp=sharing)
 
 ### Sprint 5
