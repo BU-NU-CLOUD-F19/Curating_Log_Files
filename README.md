@@ -10,7 +10,7 @@ To build a system which will start to capture the system logs generated at MOC, 
 * Briefly read the documentation of ElasticSearch and Kibana enough to understand how to install and configure it. We use ElasticSearch and Kibana on OpenShift to see how it is configured and how it is used.
 * We plan on deploying 2 VMs on OpenStack
 	* VM #1 will have ElasticSearch and Kibana installed on it, and will have a 1T volume used for log storage.
-	* VM #2  will be producing logs that will be collected by ElasticSearch.
+	* VM #2  will be producing logs that will be sent to ElasticSearch via Filebeat.
 	* Visualization will be done using Kibana.
 
 
@@ -40,14 +40,14 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 ## 3. Scope and Features of the Project:
 
 ### Features in Current Scope:
-* Setting up a collector which is getting raw log files from the pods on the established VM’s running OpenShift .
+* Setting up a collector which is getting log files from the pods on the established VM’s running OpenShift .
 * Setting up another virtual machine that acts as a log storage hub in ElasticSearch.
 * Deploy a second virtual machine on OpenStack and install Kibana and ElasticSearch on it to interact with the first vm to filter and display the filtered logs.
-* Have a testing mechanism or using one of the above mentioned ML algorithms in place to validate if the log collection process works as expected.
 
 
 ### Future Scope:
-* Organize anonymizing logs in a way from which we can build ML models to determine if there are patterns of correlation between different log files.
+* Incorporating additional log sources, e.g. ceph etc
+
 
 ## 4. Solution Concept
 
@@ -57,19 +57,16 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 ### Component Description:
 
 1. Sources: (OpenShift Cluster, VMs and Bare metal nodes) - Fluentd pods consisting of multiple containers will collect all the logs pertaining to that pod and store it in a file named fluentd.log.
-2. Collector: Script to collect logs from all fluentd.log on all sources and push them in ElasticSearch index.
+2. Filebeat: It's a log forwarder that aggregates logs from Fluentd pods and systemd logs, and ships it to Elasticsearch.
 3. RAW ElasticSearch Master: Index containing all raw log files.
-4. Filter Script:  Filter the raw log files using Machine Learning algorithms (After analyzing PII we will decide on a feasible algorithm).
-5. Filtered Elastic Search Master: Index containing all curated log files.
-6. Kibana:View the logs.
+4. Kibana:View the logs.
 
 ## 5. Acceptance criteria
 
 The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files. This will include collecting logs from a separate OpenStack VM and collecting logs from staging openshift. This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
 
 Some stretch goals are:
- 1. Creating an algorithm which can work with multiple data sources.
- 2. Using ML algorithms to detect anomalies in the log files.
+ 1. Anonymizing log files using a ML algorithm
 
 ## 6. Release Planning
 ### Sprint 1 
@@ -103,8 +100,8 @@ We’d like to reach the first milestone towards our minimum acceptance criteria
 
 ### Sprint 4
 In Sprint 4, we aim to complete the minimum acceptance criteria for the project. 
-* We plan to collect our filtered logs on to the new elastic search master instance.
-
+* We plan to get the pipeline that gets the logs into Elasticsearch working.
+[Demo link](https://docs.google.com/presentation/d/1SH1uk2c1wEw1WvuMuofFlmsqSqIh6njIhA0qGZ1hxU4/edit?usp=sharing)
 
 ### Sprint 5
 This sprint is dedicated to the completion of any goals that weren’t completed on time in previous sprints, and reaching stretch goals. Specifically, these goals include:
