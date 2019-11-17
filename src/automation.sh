@@ -11,21 +11,20 @@ autorefresh=1
 type=rpm-md
 EOF
 
-#yum install -y filebeat
+
+yum install -y filebeat
 echo "After filebeat install"
-#ssh -A root@128.31.27.217
-scp 128.31.27.217:/etc/pki/tls/certs/logstash.crt /etc/pki/tls/certs/
-echo "After certificate copy"
-file="/etc/pki/tls/certs/logstash.crt"
-echo "before if"
-if [ ! -f "$file" ]; then
-        echo "$0: File '${file}' not found."
-else
-        echo "here"
-        sudo rm /etc/filebeat/filebeat.yml
-        sudo cp filebeat.yml /etc/filebeat/
-        systemctl enable filebeat
-        systemctl start filebeat
-        journalctl --unit filebeat
-fi
-exit 0
+echo "here"
+rm -f filebeat.yml
+wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/filebeat.yml
+rm -f automation_journalctl.sh
+cat >>automation_journalctl.sh <<EOF
+journalctl --since "24 hours ago" -o verbose > /var/log/journal_text.txt
+EOF
+chmod +x automation_journalctl.sh
+service crond restart
+if grep "* * * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "* * * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
+rm -f /etc/filebeat/filebeat.yml
+sudo cp filebeat.yml /etc/filebeat/
+systemctl enable filebeat
+systemctl restart filebeat
