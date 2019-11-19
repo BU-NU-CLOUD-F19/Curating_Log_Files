@@ -26,5 +26,6 @@ service crond restart
 if grep "* * * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "* * * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
 rm -f /etc/filebeat/filebeat.yml
 sudo cp filebeat.yml /etc/filebeat/
+rm -f filebeat.yml
 systemctl enable filebeat
 systemctl restart filebeat
