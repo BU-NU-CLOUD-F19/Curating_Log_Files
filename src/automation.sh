@@ -13,19 +13,21 @@ EOF
 
 
 yum install -y filebeat
-echo "After filebeat install"
-echo "here"
+echo "Filebeat installation complete"
 rm -f filebeat.yml
 wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/filebeat.yml
+echo "Getting filebeat.yml file from server"
 rm -f automation_journalctl.sh
 cat >>automation_journalctl.sh <<EOF
 journalctl --since "24 hours ago" -o verbose > /var/log/journal_text.txt
 EOF
 chmod +x automation_journalctl.sh
+echo "Restarting crond service"
 service crond restart
 if grep -c "* * * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "* * * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
 rm -f /etc/filebeat/filebeat.yml
 sudo cp filebeat.yml /etc/filebeat/
-rm -f filebeat.yml
+echo "enabling and restarting filebeat"
 systemctl enable filebeat
 systemctl restart filebeat
+echo "Filebeat restarted successfully"
