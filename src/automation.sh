@@ -23,7 +23,7 @@ journalctl --since "24 hours ago" -o verbose > /var/log/journal_text.txt
 EOF
 chmod +x automation_journalctl.sh
 service crond restart
-if grep "* * * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "* * * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
+if grep -c "* * * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "* * * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
 rm -f /etc/filebeat/filebeat.yml
 sudo cp filebeat.yml /etc/filebeat/
 rm -f filebeat.yml
