@@ -105,9 +105,11 @@ In Sprint 4, we aim to complete the minimum acceptance criteria for the project.
 [Demo link](https://docs.google.com/presentation/d/1SH1uk2c1wEw1WvuMuofFlmsqSqIh6njIhA0qGZ1hxU4/edit?usp=sharing)
 
 ### Sprint 5
-This sprint is dedicated to the completion of any goals that weren’t completed on time in previous sprints, and reaching stretch goals. Specifically, these goals include:
-* Creating an algorithm which can work with multiple data sources.
-* Using ML algorithms to detect anomalies in the log files.
+This sprint is dedicated to the completion of additional enhancements and scaling features. Specifically, these goals include:
+* Mitigating the possibility of duplicate data.
+* Automated scripts to facilitate collecting logs from sn001, sn002, sn003, and sn005 - sn004(Bastian node) is currently being collected.
+* Automated script to install ElasticSearch and Java on the centralized log collecting node. 
+* Experiement with JournalBeat to give more verbose logs.
 
 ## 7. Contributors
 * Gopalika Sharma
