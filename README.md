@@ -17,16 +17,10 @@ To build a system which will start to capture the system logs generated at MOC, 
 #### Long term
 * Organize the data so that it is potentially useful for those researchers that have access to the raw data
 	* Automate filtering of log files
-	* One such filter is to detect and potentially obfuscate any PII
-    * We are considering various test ways of filtering the log data; for example:
-		* Clustering: We can cluster the log files with respect to a keyword related to the PII we are trying to obfuscate. It is easier to filter the files when they are in clusters.
-        * Deep Learning: The feature maps of a CNN (filters in Deep learning model) capture the result of applying the filters to an input image, where the feature maps here mean identifying our log files with a user defined key.
-        * KNN item based collaborative filtering:KNN is a non-parametric, lazy learning method. It uses a database in which the data points are separated into several clusters to make inference for new samples.KNN does not make any assumptions on the underlying data distribution but it relies on item feature similarity. we need to configure our KNN model with proper hyper-params.
-        * Algorithm used for Biogenesis: We can try to use this algorithm to find a difference in the pattern of the log files so that we can segregate them, like it is done for DNA sequencing.
-	* General testing for these methods on example log files (which contain known mock PII )
-       and evaluate:
-    	* percentage that was found etcetera.
-	* Organize the anonymizing data to draw meaningful insights like get performance of various components in MOC cloud on which they can run simulations on.
+	* Automate scaling features:
+		* Install ElasticSearch on a virtual machine.
+		* Install Filebeat and set up configuration files to forward logs to ElasticSearch. 
+		* Set up a cron job to convert Journald logs from binary to text daily on very node.
 
 ## 2. Users/Personas Of The Project
 
@@ -47,6 +41,16 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 
 ### Future Scope:
 * Incorporating additional log sources, e.g. ceph etc
+* A filter to detect and potentially obfuscate any PII
+    * We are considering various test ways of filtering the log data; for example:
+		* Clustering: We can cluster the log files with respect to a keyword related to the PII we are trying to obfuscate. It is easier to filter the files when they are in clusters.
+        * Deep Learning: The feature maps of a CNN (filters in Deep learning model) capture the result of applying the filters to an input image, where the feature maps here mean identifying our log files with a user defined key.
+        * KNN item based collaborative filtering:KNN is a non-parametric, lazy learning method. It uses a database in which the data points are separated into several clusters to make inference for new samples.KNN does not make any assumptions on the underlying data distribution but it relies on item feature similarity. we need to configure our KNN model with proper hyper-params.
+        * Algorithm used for Biogenesis: We can try to use this algorithm to find a difference in the pattern of the log files so that we can segregate them, like it is done for DNA sequencing.
+	* General testing for these methods on example log files (which contain known mock PII )
+       and evaluate:
+    	* percentage that was found etcetera.
+	* Organize the anonymizing data to draw meaningful insights like get performance of various components in MOC cloud on which they can run simulations on.
 
 
 ## 4. Solution Concept
