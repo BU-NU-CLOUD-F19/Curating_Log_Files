@@ -115,6 +115,8 @@ This sprint is dedicated to the completion of additional enhancements and scalin
 * Automated script to install ElasticSearch and Java on the centralized log collecting node. 
 * Experiement with JournalBeat to give more verbose logs.
 
+[Demo link](https://docs.google.com/presentation/d/18rMIOXpnfeDlslEvj1_XluwOT4YEgfpM75S5_-QNLAw/edit?usp=sharing)
+
 ## 7. Contributors
 * Gopalika Sharma
 * Paarth Kotak
