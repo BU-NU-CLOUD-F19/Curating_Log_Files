@@ -19,7 +19,7 @@ wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master
 echo "Getting filebeat.yml file from server"
 rm -f automation_journalctl.sh
 cat >>automation_journalctl.sh <<EOF
-journalctl --since "24 hours ago" -o verbose > /var/log/journal_text.txt
+journalctl --since "24 hours ago" > /var/log/journal_text.txt
 EOF
 chmod +x automation_journalctl.sh
 echo "Restarting crond service"
