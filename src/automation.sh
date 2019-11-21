@@ -24,7 +24,11 @@ EOF
 chmod +x automation_journalctl.sh
 echo "Restarting crond service"
 service crond restart
-if grep -c "58 23 * * * /root/automation_journalctl.sh" /var/spool/cron/root; then echo "Entry already in crontab"; else echo "58 23 * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root; fi
+if grep -c "58 23 * * * /root/automation_journalctl.sh" /var/spool/cron/root; then
+        echo "Entry already in crontab"
+else
+        echo "58 23 * * * /root/automation_journalctl.sh" >>  /var/spool/cron/root
+fi
 rm -f /etc/filebeat/filebeat.yml
 sudo cp filebeat.yml /etc/filebeat/
 echo "enabling and restarting filebeat"
