@@ -3,7 +3,7 @@
 ## 1. Vision and Goals Of The Project:
 
 ### Vision
-To build a system which will start to capture the system logs generated at MOC, automate the process of anonymizing logs and organize logs by a methodology which will help to see if there is a pattern such as demands on different services and how they are correlated.
+Our projects main goal is to capture the system logs generated at MOC, automate the process of collecting logs from different sources and allow users to view them in a central location. 
 
 ### Goals
 #### Short Term 
