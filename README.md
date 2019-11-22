@@ -17,10 +17,7 @@ To build a system which will start to capture the system logs generated at MOC, 
 #### Long term
 * Organize the data so that it is potentially useful for those researchers that have access to the raw data
 	* Automate filtering of log files
-	* Automate scaling features:
-		* Install ElasticSearch on a virtual machine.
-		* Install Filebeat and set up configuration files to forward logs to ElasticSearch. 
-		* Set up a cron job to convert Journald logs from binary to text daily on very node.
+	
 
 ## 2. Users/Personas Of The Project
 
@@ -36,7 +33,10 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 ### Features in Current Scope:
 * Setting up a collector which is getting log files from the pods on the established VM’s running OpenShift .
 * Setting up another virtual machine that acts as a log storage hub in ElasticSearch.
-* Deploy a second virtual machine on OpenStack and install Kibana and ElasticSearch on it to interact with the first vm to filter and display the filtered logs.
+* Automate scaling features:
+		* Install ElasticSearch on a virtual machine.
+		* Install Filebeat and set up configuration files to forward logs to ElasticSearch. 
+		* Set up a cron job to convert Journald logs from binary to text daily on very node.
 
 
 ### Future Scope:
@@ -61,13 +61,13 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 ### Component Description:
 
 1. Sources: (OpenShift Cluster, VMs and Bare metal nodes) - Fluentd pods consisting of multiple containers will collect all the logs pertaining to that pod and store it in a file named fluentd.log.
-2. Filebeat: It's a log forwarder that aggregates logs from Fluentd pods and systemd logs, and ships it to Elasticsearch.
+2. Filebeat: It's a log forwarder that aggregates logs from Fluentd pods and systemd logs, and ships it to Elasticsearch. Alternative: Journalbeat - Works fine, but is a experimental software that can be eradicated in the future.
 3. RAW ElasticSearch Master: Index containing all raw log files.
 4. Kibana:View the logs.
 
 ## 5. Acceptance criteria
 
-The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files. This will include collecting logs from a separate OpenStack VM and collecting logs from staging openshift. This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
+The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files. This will include collecting logs from OpenShift nodes sn001-sn005. This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
 
 Some stretch goals are:
  1. Anonymizing log files using a ML algorithm
@@ -110,10 +110,10 @@ In Sprint 4, we aim to complete the minimum acceptance criteria for the project.
 
 ### Sprint 5
 This sprint is dedicated to the completion of additional enhancements and scaling features. Specifically, these goals include:
-* Mitigating the possibility of duplicate data.
-* Automated scripts to facilitate collecting logs from sn001, sn002, sn003, and sn005 - sn004(Bastian node) is currently being collected.
+* Mitigating the possibility of duplicate logs being sent to elasticsearch.
+* Automated scripts to facilitate collecting logs from sn001, sn002, sn003, and sn005 - sn004(Bastian node).
 * Automated script to install ElasticSearch and Java on the centralized log collecting node. 
-* Experiement with JournalBeat to give more verbose logs.
+* Experiement with JournalBeat as a replacement to Filebeat.
 
 [Demo link](https://docs.google.com/presentation/d/18rMIOXpnfeDlslEvj1_XluwOT4YEgfpM75S5_-QNLAw/edit?usp=sharing)
 
