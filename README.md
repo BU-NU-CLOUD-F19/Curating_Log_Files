@@ -2,44 +2,34 @@
 
 ## 1. Vision and Goals Of The Project:
 
-### Vision
-Our projects main goal is to capture the system logs generated at MOC, automate the process of collecting logs from different sources and allow users to view them in a central location. 
+Our projects main goal is to capture the system logs generated at ([MOC](link:https://massopen.cloud/)), automate the process of collecting logs from different sources and allow users to view them in a central location. Organize the data so that it is potentially useful for those researchers that have access to the raw data.
 
-### Goals
-#### Short Term 
-* Briefly read the documentation of ElasticSearch and Kibana enough to understand how to install and configure it. We use ElasticSearch and Kibana on OpenShift to see how it is configured and how it is used.
-* We plan on deploying 2 VMs on OpenStack
-	* VM #1 will have ElasticSearch and Kibana installed on it, and will have a 1T volume used for log storage.
-	* VM #2  will be producing logs that will be sent to ElasticSearch via Filebeat.
-	* Visualization will be done using Kibana.
+Main Goals of the Project:
 
-
-#### Long term
-* Organize the data so that it is potentially useful for those researchers that have access to the raw data
-	* Automate filtering of log files
+* Provide an automated mechanism to collect logs from different source machines on MOC. 
+* Have a log collector deployed on each source that reads systemd logs and forwards them to elasticsearch deployed on a destination machine where all the logs from different sources are collected and converged.
+* Provide visualization of the logs in Elasticsearch through Kibana.
 	
-
 ## 2. Users/Personas Of The Project
 
 ### End Users:
 * Administrators of MOC : Get access to unfiltered/ original logs with confidential information.
-* Researchers and Developers: Anonymized logs through which they can analyse how a cloud works, but shouldn’t have access to confidential information about the users of MOC.
-* Some researchers and developers will have NDA (non-disclosure agreements) with the MOC so some will be able to gain access to the raw logs.
-
-In the future, we may provide multi-tenant logging so that anyone can access and review all of the           logs  from their projects on the MOC.
+* Researchers and Developers: Logs provided through which they can analyse how a cloud works, but shouldn’t have access to confidential information about the users of MOC (Some filter mechanism will be required which can be implemented as a future scope).
+* Some researchers and developers will have NDA (non-disclosure agreements) with the MOC so some will be able to gain access to the raw logs in Elasticsearch.
 
 ## 3. Scope and Features of the Project:
 
 ### Features in Current Scope:
 * Setting up a collector which is getting log files from the pods on the established VM’s running OpenShift .
-* Setting up another virtual machine that acts as a log storage hub in ElasticSearch.
+* Setting up a virtual machine that acts as a log storage hub in ElasticSearch.
 * Automate scaling features:
-		* Install ElasticSearch on a virtual machine.
-		* Install Filebeat and set up configuration files to forward logs to ElasticSearch. 
-		* Set up a cron job to convert Journald logs from binary to text daily on very node.
-
+	* Provide an installation script for installing and configuring Journalbeat to run on the host machine, collect system logs and send them to the machine on which Elasticsearch is running.
+	* Provide an installation script to configure Elasticsearch and Kibana with the logs viewable at [Kibana Dashboard](logging.osh.massopen.cloud:5602)
+	* Get the pipeline up and running to collect logs from OpenShift nodes sn001 to sn005 and send to the Elasticsearch virtual machine deployed on OpenStack.
 
 ### Future Scope:
+
+* Automate filtering of log files
 * Incorporating additional log sources, e.g. ceph etc
 * A filter to detect and potentially obfuscate any PII
     * We are considering various test ways of filtering the log data; for example:
@@ -60,14 +50,14 @@ In the future, we may provide multi-tenant logging so that anyone can access and
 
 ### Component Description:
 
-1. Sources: (OpenShift Cluster, VMs and Bare metal nodes) - Fluentd pods consisting of multiple containers will collect all the logs pertaining to that pod and store it in a file named fluentd.log.
-2. Filebeat: It's a log forwarder that aggregates logs from Fluentd pods and systemd logs, and ships it to Elasticsearch. Alternative: Journalbeat - Works fine, but is a experimental software that can be eradicated in the future.
-3. RAW ElasticSearch Master: Index containing all raw log files.
-4. Kibana:View the logs.
+1. Sources: OpenShift Cluster nodes that we collect logs from. Can be extended to collect logs from VMs and Bare metal nodes.
+2. Journalbeat: A lightweight shipper for forwarding and centralizing log data from systemd journals. Installed as an agent on your servers, Journalbeat monitors the journal locations that you specify, collects log events, and forwards them to Elasticsearch. Journalbeat is an Elastic Beat. It’s based on the libbeat framework.
+3. RAW ElasticSearch Master: Indexes created daily containing all raw log files with field entries like system information, log messages and few more key additional details.
+4. Kibana: A Kibana Dashboard hosted on an external url [Kibana Dashboard](logging.osh.massopen.cloud:5602) to view indexes and filter logs.
 
 ## 5. Acceptance criteria
 
-The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files. This will include collecting logs from OpenShift nodes sn001-sn005. This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
+The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files and providing them to the user in a suitable form. This will include collecting logs from OpenShift nodes sn001-sn005.This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
 
 Some stretch goals are:
  1. Anonymizing log files using a ML algorithm
@@ -79,6 +69,9 @@ The first sprint will focus on learning the necessary technical background infor
 * OpenStack
 * Kibana
 * ElasticSearch
+* Filebeat
+* Journalbeat
+* Logstash
 * MOC log collection sources. 
 * Create Story Cards.(Taiga)
 
