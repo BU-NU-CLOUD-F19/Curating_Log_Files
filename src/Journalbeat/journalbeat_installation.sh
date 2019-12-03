@@ -15,7 +15,7 @@ EOF
 yum install -y journalbeat
 echo "Journalbeat installation complete"
 rm -f journalbeat.yml
-wget https://github.com/BU-NU-CLOUD-F19/Curating_Log_Files/blob/master/src/Journalbeat/journalbeat.yml
+wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/Journalbeat/journalbeat.yml
 echo "Getting journalbeat.yml file from server"
 rm -f /etc/journalbeat/journalbeat.yml
 sudo cp journalbeat.yml /etc/journalbeat/
