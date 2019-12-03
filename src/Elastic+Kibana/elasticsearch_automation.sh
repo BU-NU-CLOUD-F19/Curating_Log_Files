@@ -17,7 +17,7 @@ EOF
 yum install -y elasticsearch
 yum install -y wget
 rm -f elasticsearch.yml
-wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/elasticsearch.yml
+wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/Elastic%2BKibana/elasticsearch.yml
 rm -f /etc/elasticsearch/elasticsearch.yml
 sudo cp elasticsearch.yml /etc/elasticsearch/
 systemctl daemon-reload
@@ -26,7 +26,7 @@ systemctl start elasticsearch
 
 yum install -y kibana
 rm -f kibana.yml
-wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/kibana.yml
+wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/Elastic%2BKibana/kibana.yml
 rm -f /etc/kibana/kibana.yml
 sudo cp kibana.yml /etc/kibana/
 systemctl enable kibana
