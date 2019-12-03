@@ -15,7 +15,7 @@ EOF
 yum install -y filebeat
 echo "Filebeat installation complete"
 rm -f filebeat.yml
-wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/filebeat.yml
+wget https://raw.githubusercontent.com/BU-NU-CLOUD-F19/Curating_Log_Files/master/src/Filebeat/filebeat.yml
 echo "Getting filebeat.yml file from server"
 rm -f automation_journalctl.sh
 cat >>automation_journalctl.sh <<EOF
