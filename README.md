@@ -110,7 +110,12 @@ This sprint is dedicated to the completion of additional enhancements and scalin
 
 [Demo link](https://docs.google.com/presentation/d/18rMIOXpnfeDlslEvj1_XluwOT4YEgfpM75S5_-QNLAw/edit?usp=sharing)
 
-## 7. Contributors
+
+## 7. Setup
+
+[Installation Instructions](https://github.com/BU-NU-CLOUD-F19/Curating_Log_Files/blob/master/Install.md)
+
+## 8. Contributors
 * Gopalika Sharma
 * Paarth Kotak
 * Prachi Ved
