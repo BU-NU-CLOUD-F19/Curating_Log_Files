@@ -110,6 +110,11 @@ This sprint is dedicated to the completion of additional enhancements and scalin
 
 [Demo link](https://docs.google.com/presentation/d/18rMIOXpnfeDlslEvj1_XluwOT4YEgfpM75S5_-QNLAw/edit?usp=sharing)
 
+### Final presentation and Video
+
+[Presentation](https://prezi.com/view/HJTMrKolB6Vddy8UkSXG/)
+[Video](https://youtu.be/1XmLbdqIEmM)
+
 
 ## 7. Setup
 
