@@ -9,6 +9,9 @@ Main Goals of the Project:
 * Provide an automated mechanism to collect logs from different source machines on MOC. 
 * Have a log collector deployed on each source that reads systemd logs and forwards them to elasticsearch deployed on a destination machine where all the logs from different sources are collected and converged.
 * Provide visualization of the logs in Elasticsearch through Kibana.
+
+Some stretch goals are:
+* Get data out of Elasticsearch in order to be able to share it
 	
 ## 2. Users/Personas Of The Project
 
@@ -58,9 +61,6 @@ Main Goals of the Project:
 ## 5. Acceptance criteria
 
 The minimum viable product is the demonstration of the specific configuration of services to enable the automated collection of log files and providing them to the user in a suitable form. This will include collecting logs from OpenShift nodes sn001-sn005.This will demonstrate how to configure a service that will enable researchers to access logs collected in the short term.
-
-Some stretch goals are:
- 1. Anonymizing log files using a ML algorithm
 
 ## 6. Release Planning
 ### Sprint 1 
