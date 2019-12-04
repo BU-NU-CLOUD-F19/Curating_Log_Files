@@ -113,6 +113,7 @@ This sprint is dedicated to the completion of additional enhancements and scalin
 ### Final presentation and Video
 
 [Presentation](https://prezi.com/view/HJTMrKolB6Vddy8UkSXG/)
+
 [Video](https://youtu.be/1XmLbdqIEmM)
 
 
